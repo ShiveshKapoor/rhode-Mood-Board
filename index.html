@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rhode — Find Your Glow | Personalized Skincare Quiz</title>
+  <meta name="description" content="Discover your perfect Rhode skincare routine. Take our personalized quiz and build your mood board with products curated just for you." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ======================== LANDING PAGE ======================== -->
+  <section id="landing" class="page active">
+    <nav class="nav" id="nav-landing">
+      <span class="nav-logo">rhode</span>
+      <span class="nav-tagline">find your glow</span>
+    </nav>
+
+    <div class="landing-content">
+      <div class="landing-hero">
+        <p class="landing-eyebrow">Your Personalized Skincare Journey</p>
+        <h1 class="landing-title">Build Your<br /><em>Mood Board</em></h1>
+        <p class="landing-subtitle">
+          Answer a few questions about your skin, your style, and your vibe —
+          and we'll curate the perfect Rhode routine just for you.
+        </p>
+        <button class="btn-primary" id="btn-start" onclick="startQuiz()">
+          <span>Take the Quiz</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
+        <p class="landing-note">✦ Takes less than 2 minutes</p>
+      </div>
+
+      <div class="landing-visual">
+        <div class="floating-card card-1">
+          <div class="card-icon">🌊</div>
+          <span>Hydration</span>
+        </div>
+        <div class="floating-card card-2">
+          <div class="card-icon">✨</div>
+          <span>Glow</span>
+        </div>
+        <div class="floating-card card-3">
+          <div class="card-icon">🌸</div>
+          <span>Peptides</span>
+        </div>
+        <div class="floating-card card-4">
+          <div class="card-icon">🍓</div>
+          <span>Lip Care</span>
+        </div>
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== QUIZ PAGE ======================== -->
+  <section id="quiz" class="page">
+    <nav class="nav">
+      <span class="nav-logo">rhode</span>
+      <div class="progress-wrapper">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <span class="progress-label" id="progress-label">1 / 10</span>
+      </div>
+    </nav>
+
+    <div class="quiz-container">
+      <div class="quiz-question-wrapper" id="quiz-question-wrapper">
+        <!-- Questions injected by JS -->
+      </div>
+    </div>
+
+    <div class="quiz-nav-btns">
+      <button class="btn-secondary" id="btn-prev" onclick="prevQuestion()" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+        Back
+      </button>
+      <button class="btn-primary" id="btn-next" onclick="nextQuestion()" disabled>
+        Next
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ======================== LOADING / TRANSITION ======================== -->
+  <section id="loading" class="page">
+    <div class="loading-content">
+      <div class="loading-spinner">
+        <div class="spinner-ring"></div>
+        <div class="spinner-ring"></div>
+        <div class="spinner-ring"></div>
+      </div>
+      <p class="loading-text">Curating your perfect routine...</p>
+      <p class="loading-subtext">Analyzing your answers ✦</p>
+    </div>
+  </section>
+
+  <!-- ======================== RESULTS / MOOD BOARD ======================== -->
+  <section id="results" class="page">
+    <nav class="nav">
+      <span class="nav-logo">rhode</span>
+      <button class="btn-retake" onclick="retakeQuiz()">Retake Quiz</button>
+    </nav>
+
+    <div class="results-container">
+      <!-- Mood Board Header -->
+      <div class="results-header">
+        <p class="results-eyebrow">Your Personalized</p>
+        <h2 class="results-title">Mood Board</h2>
+        <p class="results-vibe" id="results-vibe"></p>
+      </div>
+
+      <!-- Mood Board Grid -->
+      <div class="moodboard" id="moodboard">
+        <!-- Generated by JS -->
+      </div>
+
+      <!-- Product Recommendations -->
+      <div class="results-products-section">
+        <p class="products-eyebrow">Curated For You</p>
+        <h3 class="products-title">Your Rhode Essentials</h3>
+        <div class="products-grid" id="products-grid">
+          <!-- Generated by JS -->
+        </div>
+      </div>
+
+      <!-- Routine Summary -->
+      <div class="routine-section" id="routine-section">
+        <!-- Generated by JS -->
+      </div>
+
+      <!-- CTA -->
+      <div class="results-cta">
+        <p>Ready to glow?</p>
+        <button class="btn-primary" onclick="window.open('https://rhodeskin.com','_blank')">
+          <span>Shop Your Routine</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
+        <button class="btn-secondary" onclick="retakeQuiz()" style="margin-top:12px">Retake Quiz</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
