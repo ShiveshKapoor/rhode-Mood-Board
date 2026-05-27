@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>rhode — Find Your Glow</title>
+  <meta name="description" content="Discover your perfect Rhode skincare routine. Take our personalized quiz and build your mood board with products curated just for you." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Grain overlay -->
+  <div class="grain-overlay"></div>
+
+  <!-- Cursor glow -->
+  <div class="cursor-glow" id="cursor-glow"></div>
+
+  <!-- ======================== LANDING ======================== -->
+  <section id="landing" class="page active">
+    <nav class="nav">
+      <div class="nav-inner">
+        <span class="nav-logo">rhode</span>
+        <div class="nav-links">
+          <span class="nav-link">skin</span>
+          <span class="nav-link">lips</span>
+          <span class="nav-link nav-link-active">quiz</span>
+        </div>
+      </div>
+    </nav>
+
+    <div class="landing-main">
+      <div class="landing-left">
+        <div class="landing-badge">
+          <span class="badge-dot"></span>
+          New Campaign
+        </div>
+        <h1 class="landing-title">
+          find your<br/>
+          <span class="title-italic">perfect</span><br/>
+          glow
+        </h1>
+        <p class="landing-body">
+          A personalized skincare quiz designed to match you with the Rhode products that complement your skin, your style, and your everyday ritual.
+        </p>
+        <div class="landing-cta-group">
+          <button class="btn-hero" id="btn-start" onclick="startQuiz()">
+            Take the Quiz
+            <span class="btn-arrow">→</span>
+          </button>
+          <span class="cta-note">2 min · 10 questions · your routine</span>
+        </div>
+
+        <div class="landing-stats">
+          <div class="stat">
+            <span class="stat-number">10</span>
+            <span class="stat-label">Questions</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number">7</span>
+            <span class="stat-label">Products</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number">4</span>
+            <span class="stat-label">Aesthetics</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="landing-right">
+        <div class="hero-visual">
+          <!-- Abstract product collage -->
+          <div class="hero-blob blob-1"></div>
+          <div class="hero-blob blob-2"></div>
+          <div class="hero-blob blob-3"></div>
+          
+          <div class="hero-card hc-1">
+            <div class="hc-emoji">🍩</div>
+            <div class="hc-text">
+              <span class="hc-label">Glazed Donut</span>
+              <span class="hc-sub">Skin</span>
+            </div>
+          </div>
+          <div class="hero-card hc-2">
+            <div class="hc-emoji">💋</div>
+            <div class="hc-text">
+              <span class="hc-label">Peptide Lip</span>
+              <span class="hc-sub">Treatment</span>
+            </div>
+          </div>
+          <div class="hero-card hc-3">
+            <div class="hc-emoji">✨</div>
+            <div class="hc-text">
+              <span class="hc-label">Glazing</span>
+              <span class="hc-sub">Fluid</span>
+            </div>
+          </div>
+          <div class="hero-card hc-4">
+            <div class="hc-emoji">🌸</div>
+            <div class="hc-text">
+              <span class="hc-label">Pocket</span>
+              <span class="hc-sub">Blush</span>
+            </div>
+          </div>
+
+          <div class="hero-ring"></div>
+          <div class="hero-ring ring-2"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="landing-marquee">
+      <div class="marquee-track">
+        <span>peptide glazing fluid ✦ barrier restore cream ✦ peptide lip treatment ✦ pocket blush ✦ glazing milk ✦ peptide lip tint ✦ pineapple refresh ✦ </span>
+        <span>peptide glazing fluid ✦ barrier restore cream ✦ peptide lip treatment ✦ pocket blush ✦ glazing milk ✦ peptide lip tint ✦ pineapple refresh ✦ </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== QUIZ ======================== -->
+  <section id="quiz" class="page">
+    <nav class="nav">
+      <div class="nav-inner">
+        <span class="nav-logo">rhode</span>
+        <div class="progress-area">
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <span class="progress-text" id="progress-text">01 / 10</span>
+        </div>
+      </div>
+    </nav>
+
+    <div class="quiz-body">
+      <div class="quiz-content" id="quiz-content">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+
+    <div class="quiz-footer">
+      <button class="btn-back" id="btn-prev" onclick="prevQuestion()" disabled>
+        ← Back
+      </button>
+      <button class="btn-next" id="btn-next" onclick="nextQuestion()" disabled>
+        Next →
+      </button>
+    </div>
+  </section>
+
+  <!-- ======================== LOADING ======================== -->
+  <section id="loading" class="page">
+    <div class="loader-wrap">
+      <div class="loader-circle">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="42" class="loader-bg" />
+          <circle cx="50" cy="50" r="42" class="loader-fg" />
+        </svg>
+        <span class="loader-logo">r</span>
+      </div>
+      <p class="loader-text">curating your glow</p>
+      <div class="loader-dots">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== RESULTS ======================== -->
+  <section id="results" class="page">
+    <nav class="nav">
+      <div class="nav-inner">
+        <span class="nav-logo">rhode</span>
+        <button class="btn-retake" onclick="retakeQuiz()">Retake Quiz</button>
+      </div>
+    </nav>
+
+    <div class="results-wrap">
+      <!-- Hero Banner -->
+      <div class="results-hero" id="results-hero">
+        <p class="rh-eyebrow">Your Personalized</p>
+        <h2 class="rh-title">Mood Board</h2>
+        <p class="rh-tagline" id="rh-tagline"></p>
+      </div>
+
+      <!-- Mood Board -->
+      <div class="mood-grid" id="mood-grid"></div>
+
+      <!-- Products -->
+      <div class="products-section">
+        <div class="section-header">
+          <span class="sh-line"></span>
+          <span class="sh-label">Curated For You</span>
+          <span class="sh-line"></span>
+        </div>
+        <h3 class="products-heading">Your Rhode Essentials</h3>
+        <div class="products-row" id="products-row"></div>
+      </div>
+
+      <!-- Routine -->
+      <div class="routine-wrap" id="routine-wrap"></div>
+
+      <!-- CTA -->
+      <div class="final-cta">
+        <h4 class="cta-heading">ready to glow?</h4>
+        <div class="cta-btns">
+          <button class="btn-hero" onclick="window.open('https://rhodeskin.com','_blank')">
+            Shop Your Routine <span class="btn-arrow">→</span>
+          </button>
+          <button class="btn-outline" onclick="retakeQuiz()">Retake Quiz</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
